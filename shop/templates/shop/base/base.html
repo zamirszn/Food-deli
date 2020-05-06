@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Food Deli</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="{% static "shop/fonts/icomoon/style.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/jquery-ui.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/owl.theme.default.min.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/aos.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/style.css" %}">
+</head>
+
+<body>
+    <div class="site-wrap">
+        {% include 'shop/base/navbar.html' %}
+        {% block content %}
+        {% endblock %}
+        {% include 'shop/base/footer.html' %}
+    </div>
+    <script src="{% static "shop/js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "shop/js/jquery-ui.js" %}"></script>
+    <script src="{% static "shop/js/popper.min.js" %}"></script>
+    <script src="{% static "shop/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "shop/js/owl.carousel.min.js" %}"></script>
+    <script src="{% static "shop/js/jquery.magnific-popup.min.js" %}"></script>
+    <script src="{% static "shop/js/aos.js" %}"></script>
+    <script src="{% static "shop/js/main.js" %}"></script>
+</body>
+</html>

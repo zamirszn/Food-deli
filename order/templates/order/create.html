@@ -1,0 +1,35 @@
+{% extends "shop/base/base.html" %}
+{% load crispy_forms_tags %}
+{#{% block title %}#}
+{#Checkout#}
+{#{% endblock %}#}
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Checkout</h1>
+    <div class="order-info">
+        <h3 class="text-center">Your order</h3>
+          <ul>
+              {% for item in cart %}
+              <li>
+                  {{ item.quantity }}x {{ item.product.name }}
+                  <span>#{{ item.total_price }}</span>
+              </li>
+              {% endfor %}
+        {% if cart.coupon.active %}
+        <li>
+            "{{ cart.coupon.code }}" ({{ cart.coupon.discount }}% off)
+            <span>-#{{ cart.get_discount|floatformat:'2' }}</span>
+        </li>
+        <h4>Total: #{{ cart.get_total_price_after_discount }}</h4>
+            {% else %}
+            <h4>Total: #{{ cart.get_total_price }}</h4>
+        {% endif %}
+        </ul>
+    </div>
+    <form action="." method="POST" class="order-form">
+        {{ form|crispy }}
+        <p><input class="btn btn-primary btn-sm btn-block" type="submit" value="Place order"></p>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

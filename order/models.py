@@ -16,6 +16,7 @@ class Order(models.Model):
     paid = models.BooleanField(default=False)
     coupon = models.ForeignKey(Coupon, related_name='orders', null=True, blank=True, on_delete=models.SET_NULL)
     discount = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    ref = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         ordering = ('-created',)
@@ -39,3 +40,16 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+
+
+# class Payment(models.Model):
+#     ref = models.CharField(max_length=200)
+#     user = models.ForeignKey(Order, on_delete=models.CASCADE)
+#     amount = models.FloatField()
+#     time = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.user.first_name
+
+
+
